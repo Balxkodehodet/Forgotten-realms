@@ -7,24 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Forgotten realms</title>
   </head>
- <body>
-  <header>
-    <section id="stats">
-      <ul class="ulist">
-        <button id="strength"><li>Strength: 10</li></button>
-        <button id="agillity"><li>Agillity: 10</li></button>
-        <button id="constitution"><li>Constitution: 10</li></button>
-        <button id="wisdom"><li>Wisdom: 10</li></button>
-        <button id="intelligence"><li>Intelligence: 10</li></button>
-        <button id="charisma"><li>Charisma: 10</li></button>
-      </ul>
+  <body>
+    <header>
+      <section class="stats" id="stats">
+        <ul class="ulist">
+          <button id="strength"><li>Strength: 10</li></button>
+          <button id="agillity"><li>Agillity: 10</li></button>
+          <button id="constitution"><li>Constitution: 10</li></button>
+          <button id="wisdom"><li>Wisdom: 10</li></button>
+          <button id="intelligence"><li>Intelligence: 10</li></button>
+          <button id="charisma"><li>Charisma: 10</li></button>
+        </ul>
+      </section>
     </header>
-    </section>
     <main id="main">
-      <section class="randomStats">
+      <section class="hide show-sheet" id="character-sheet">
+        <p>
+          Attack: <br /><br /><br /><br />
+          Defense: <br /><br /><br /><br />
+          Hitpoints: <br /><br /><br /><br />
+          Move arrow keys to play!
+        </p>
+      </section>
+      <section id="randomStats" class="randomStats">
         <p>Choose random stats:</p>
-        <button id="btnRandom">Randomize</button>
-        <button class="hide" id="btnAllocate">
+        <button class="btnRandom" id="btnRandom">Randomize</button>
+        <button class="hide btnAllocate" id="btnAllocate">
           Allocate points automatically randomly
         </button>
         <p class="hide" id="textAllocate">hidden</p>
@@ -33,10 +41,9 @@
         <img id="img-darkelf" src="images/dark elf.png" alt="Dark elf" />
       </section>
       <section id="Game-menu">
-        <button class="hide" id="start-game">Start Game</button>
-        <button class="hide" id="end-game">End Game</button>
+        <button class="hide start-game" id="start-game">Start Game</button>
+        <button class="hide end-game" id="end-game">End Game</button>
       </section>
-
     </main>
   </body>
   <footer>

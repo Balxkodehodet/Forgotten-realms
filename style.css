@@ -2,6 +2,16 @@
   margin: 0px;
   padding: 0px;
 }
+.show-sheet {
+  background-color: antiquewhite;
+  color: black;
+  min-width: 11%;
+  min-height: 10rem;
+  padding: 10px;
+  position: fixed;
+  left: 1%;
+  top: 10%;
+}
 body {
   background-color: hsla(223, 83%, 58%, 0.586);
   display: flex;
@@ -21,13 +31,13 @@ body {
   max-width: 400px;
 }
 
-#btnRandom {
+.btnRandom {
   background-color: blue;
   color: white;
   margin: 20px;
   padding: 10px;
 }
-#btnAllocate {
+.btnAllocate {
   background-color: blue;
   color: white;
   margin: 20px;
@@ -45,9 +55,7 @@ header {
   max-width: 100vw;
   min-width: 100vw;
 }
-#stats {
-  display: flex;
-  align-items: end;
+.stats {
   max-width: 100vw;
   min-width: 100vw;
 }
@@ -87,7 +95,13 @@ main {
 footer {
   display: flex;
   justify-content: center;
+  position: fixed;
+  bottom: 1%;
 }
 #dark-elf {
   position: relative;
+}
+.end-game {
+  position: fixed;
+  left: 1%;
 }

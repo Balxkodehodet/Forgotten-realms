@@ -4,12 +4,15 @@ let randomNrGen = Math.floor(Math.random() * (10 - 4 + 1)) + 4;
 console.log(randomNrGen);
 
 // variables for the functions
+let sectionStats = document.getElementById("stats");
 let btnRand = document.getElementById("btnRandom");
 let statNr = 0;
 let btnAllocate = document.getElementById("btnAllocate");
 let txtA = document.getElementById("textAllocate");
 let startGamebtn = document.getElementById("start-game");
 let endGamebtn = document.getElementById("end-game");
+let characterSheet = document.getElementById("character-sheet");
+
 const sectionStat = document.createElement("section");
 const sectionPara = document.createElement("p");
 let main = document.getElementById("main");
@@ -48,9 +51,6 @@ function statPoints() {
   btnRand.removeEventListener("click", statPoints);
 }
 
-let firstTime = true;
-let originalCounter = 10;
-
 // Function to decrement the random counter by 1 each 1 point allocated to stats
 // It also adds 1 point to each stat depending on what stat you clicked at
 function decrementPoints(event) {
@@ -68,6 +68,7 @@ function decrementPoints(event) {
     }
   } else if (statNr === 0) {
     sectionPara.textContent = `You have no more stat points: ${statNr}`;
+    startGamebtn.classList.add("show");
   }
 }
 
@@ -95,6 +96,7 @@ function randomAllocation() {
   }
   if (statNr === 0) {
     sectionPara.textContent = `You have no more stat points: ${statNr}`;
+    startGamebtn.classList.add("show");
   }
 }
 btnRand.addEventListener("click", statPoints);
@@ -105,40 +107,59 @@ con.addEventListener("click", decrementPoints);
 wis.addEventListener("click", decrementPoints);
 int.addEventListener("click", decrementPoints);
 cha.addEventListener("click", decrementPoints);
-//startGamebtn.addEventListener("click");
+startGamebtn.addEventListener("click", moveDarkelf);
 //endGamebtn.addEventListener("click");
 
-let darkElf = document.getElementById("dark-elf");
-//initial position
-let x = 0;
-let y = 0;
+function moveDarkelf() {
+  //Variable for moving the dark elf
+  let darkElf = document.getElementById("dark-elf");
+  //Show character sheet stats
+  characterSheet.classList.add("show");
+  characterSheet.classList.remove("hide");
+  endGamebtn.classList.remove("hide");
+  endGamebtn.classList.add("show");
 
-document.addEventListener("keydown", function (event) {
-  console.log(`keypressed ${event.key}, key code: ${event.code}`);
-  //event.preventDefault();
-  let position = darkElf.getBoundingClientRect();
+  // Hide other elements
+  sectionStats.classList.remove("show");
+  sectionStats.classList.add("hide");
+  startGamebtn.classList.remove("show");
+  startGamebtn.classList.add("hide");
+  let rStats = document.getElementById("randomStats");
+  rStats.classList.remove("randomStats");
+  rStats.classList.add("hide");
+  sectionStat.classList.remove("show");
+  sectionStat.classList.add("hide");
 
-  switch (event.key) {
-    case "ArrowUp":
-      console.log("ArrowUp Was pressed");
-      y -= 10;
-      break;
-    case "ArrowDown":
-      console.log("ArrowDown Was pressed");
-      y += 10;
-      break;
-    case "ArrowLeft":
-      console.log("ArrowLeft Was pressed");
-      x -= 10;
-      break;
-    case "ArrowRight":
-      console.log("ArrowRight Was pressed");
-      x += 10;
-      break;
-  }
-  darkElf.style.transform = `translate(${x}px, ${y}px)`;
-});
+  //initial position
+  let x = 0;
+  let y = 0;
 
+  document.addEventListener("keydown", function (event) {
+    console.log(`keypressed ${event.key}, key code: ${event.code}`);
+    //event.preventDefault();
+    let position = darkElf.getBoundingClientRect();
+
+    switch (event.key) {
+      case "ArrowUp":
+        console.log("ArrowUp Was pressed");
+        y -= 10;
+        break;
+      case "ArrowDown":
+        console.log("ArrowDown Was pressed");
+        y += 10;
+        break;
+      case "ArrowLeft":
+        console.log("ArrowLeft Was pressed");
+        x -= 10;
+        break;
+      case "ArrowRight":
+        console.log("ArrowRight Was pressed");
+        x += 10;
+        break;
+    }
+    darkElf.style.transform = `translate(${x}px, ${y}px)`;
+  });
+}
 let character = [
   {
     name: "",
