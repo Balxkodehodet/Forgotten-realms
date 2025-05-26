@@ -105,8 +105,39 @@ con.addEventListener("click", decrementPoints);
 wis.addEventListener("click", decrementPoints);
 int.addEventListener("click", decrementPoints);
 cha.addEventListener("click", decrementPoints);
-startGamebtn.addEventListener("click");
-endGamebtn.addEventListener("click");
+//startGamebtn.addEventListener("click");
+//endGamebtn.addEventListener("click");
+
+let darkElf = document.getElementById("dark-elf");
+//initial position
+let x = 0;
+let y = 0;
+
+document.addEventListener("keydown", function (event) {
+  console.log(`keypressed ${event.key}, key code: ${event.code}`);
+  //event.preventDefault();
+  let position = darkElf.getBoundingClientRect();
+
+  switch (event.key) {
+    case "ArrowUp":
+      console.log("ArrowUp Was pressed");
+      y -= 10;
+      break;
+    case "ArrowDown":
+      console.log("ArrowDown Was pressed");
+      y += 10;
+      break;
+    case "ArrowLeft":
+      console.log("ArrowLeft Was pressed");
+      x -= 10;
+      break;
+    case "ArrowRight":
+      console.log("ArrowRight Was pressed");
+      x += 10;
+      break;
+  }
+  darkElf.style.transform = `translate(${x}px, ${y}px)`;
+});
 
 let character = [
   {
