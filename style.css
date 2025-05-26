@@ -1,0 +1,90 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  background-color: hsla(223, 83%, 58%, 0.586);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: auto;
+}
+.randomStats {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color: hsl(267, 41%, 47%);
+  color: rgb(241, 241, 251);
+  margin: 10px;
+  padding: 10px;
+  max-width: 400px;
+}
+
+#btnRandom {
+  background-color: blue;
+  color: white;
+  margin: 20px;
+  padding: 10px;
+}
+#btnAllocate {
+  background-color: blue;
+  color: white;
+  margin: 20px;
+  padding: 10px;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+header {
+  margin: 0px;
+  padding: 0px;
+  max-width: 100vw;
+  min-width: 100vw;
+}
+#stats {
+  display: flex;
+  align-items: end;
+  max-width: 100vw;
+  min-width: 100vw;
+}
+.ulist {
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 5rem;
+  width: 100vw;
+  padding: 10px;
+  margin: 10px;
+  background-color: brown;
+  list-style-type: none;
+}
+button {
+  background-color: brown;
+  color: white;
+  margin: 20px;
+  padding: 10px;
+}
+img {
+  min-width: 4rem;
+  min-height: 4rem;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  max-height: 100vh;
+  margin: 0px;
+  padding: 0px;
+}
+footer {
+  display: flex;
+  justify-content: center;
+}
