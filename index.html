@@ -22,11 +22,12 @@
       </section>
     </header>
     <main id="main">
+      <section class="hide" id="endedgame"><h2>GAME OVER</h2></section>
       <section class="hide show-sheet" id="character-sheet">
         <p>
-          Attack: <br /><br /><br /><br />
-          Defense: <br /><br /><br /><br />
-          Hitpoints: <br /><br /><br /><br />
+          Attack:<span id="attack"></span> <br /><br /><br /><br />
+          Defense:<span id="defence"></span> <br /><br /><br /><br />
+          Hitpoints:<span id="hitpoints"></span> <br /><br /><br /><br />
           Move arrow keys to play!
         </p>
       </section>
@@ -40,6 +41,9 @@
       </section>
       <section id="dark-elf">
         <img id="img-darkelf" src="images/dark elf.png" alt="Dark elf" />
+      </section>
+      <section id="devil">
+        <img id="img-devil" src="images/devil.png" alt="Devil" />
       </section>
       <section id="Game-menu">
         <button class="hide start-game" id="start-game">Start Game</button>

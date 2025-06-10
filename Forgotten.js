@@ -13,6 +13,7 @@ let startGamebtn = document.getElementById("start-game");
 let endGamebtn = document.getElementById("end-game");
 let characterSheet = document.getElementById("character-sheet");
 let showHideMenu = document.getElementById("show-hidemenu");
+let endedGame = document.getElementById("endedgame");
 
 const sectionStat = document.createElement("section");
 const sectionPara = document.createElement("p");
@@ -40,6 +41,11 @@ let cha = document.getElementById("charisma");
 
 // store the stats in a array to be manipulated later in code easier
 const stats = [str, agi, con, wis, int, cha];
+
+// Attack, Defence and hitpoints
+let attack = document.getElementById("attack");
+let defence = document.getElementById("defence");
+let hp = document.getElementById("hitpoints");
 
 // Function for the randomize button to generate random nr, make the allocate button visible and create text for the random nr p
 function statPoints() {
@@ -113,12 +119,11 @@ wis.addEventListener("click", decrementPoints);
 int.addEventListener("click", decrementPoints);
 cha.addEventListener("click", decrementPoints);
 startGamebtn.addEventListener("click", moveDarkelf);
-showHideMenu.addEventListener("click", showHideStats);
-//endGamebtn.addEventListener("click");
-
-function showHideStats() {
-  ulStats.classList.toggle("hide");
-  ulStats.classList.toggle("ulist");
+showHideMenu.addEventListener("click", () => showHide(ulStats, "ulist"));
+endGamebtn.addEventListener("click", () => showHide(endedGame));
+function showHide(elemt, strClassToRemove) {
+  elemt.classList.toggle("hide");
+  elemt.classList.toggle(strClassToRemove);
 }
 function moveDarkelf() {
   //Variable for moving the dark elf
@@ -128,6 +133,11 @@ function moveDarkelf() {
   characterSheet.classList.remove("hide");
   endGamebtn.classList.remove("hide");
   endGamebtn.classList.add("show");
+
+  //Add numbers to characterSheet
+  attack.textContent = char.strength * 4;
+  defence.textContent = char.agillity * 4;
+  hp.textContent = char.constitution * 4;
 
   // Hide other elements
   sectionStats.classList.remove("show");
@@ -141,35 +151,51 @@ function moveDarkelf() {
   sectionStat.classList.add("hide");
 
   //initial position
-  let x = 0;
-  let y = 0;
+  let xy = { x: 0, y: 0 };
+  // let x = 0;
+  // let y = 0;
 
   document.addEventListener("keydown", function (event) {
     console.log(`keypressed ${event.key}, key code: ${event.code}`);
-    //event.preventDefault();
-    let position = darkElf.getBoundingClientRect();
+    event.preventDefault();
 
     switch (event.key) {
       case "ArrowUp":
         console.log("ArrowUp Was pressed");
-        y -= 10;
+        xy.y -= 10;
         break;
       case "ArrowDown":
         console.log("ArrowDown Was pressed");
-        y += 10;
+        xy.y += 10;
         break;
       case "ArrowLeft":
         console.log("ArrowLeft Was pressed");
-        x -= 10;
+        xy.x -= 10;
         break;
       case "ArrowRight":
         console.log("ArrowRight Was pressed");
-        x += 10;
+        xy.x += 10;
         break;
     }
-    darkElf.style.transform = `translate(${x}px, ${y}px)`;
+    darkElf.style.transform = `translate(${xy.x}px, ${xy.y}px)`;
   });
 }
+
+// function to move the enemy
+function randomEnemy() {
+  // get the enemy section ID which contains a image of a devil
+  let enemy = document.getElementById("devil");
+  //initial position
+  let xy = { x: 0, y: 0 };
+  let gameIsRunning = true;
+  for (let c = 0; c < 10000; c++) {
+    let xyKeys = Math.random() < 0.5 ? "x" : "y";
+    xy[xyKeys] += 0.2;
+    console.log(xy[xyKeys]);
+    enemy.style.transform = `translate(${xy.x}px, ${xy.y}px)`;
+  }
+}
+
 let character = [
   {
     name: "",
