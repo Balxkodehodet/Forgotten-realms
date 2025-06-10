@@ -12,6 +12,7 @@ let txtA = document.getElementById("textAllocate");
 let startGamebtn = document.getElementById("start-game");
 let endGamebtn = document.getElementById("end-game");
 let characterSheet = document.getElementById("character-sheet");
+let showHideMenu = document.getElementById("show-hidemenu");
 
 const sectionStat = document.createElement("section");
 const sectionPara = document.createElement("p");
@@ -27,6 +28,8 @@ let char = {
   charisma: 10,
 };
 
+// ul stats
+let ulStats = document.getElementById("ul-stats");
 // Stats
 let str = document.getElementById("strength");
 let agi = document.getElementById("agillity");
@@ -99,6 +102,8 @@ function randomAllocation() {
     startGamebtn.classList.add("show");
   }
 }
+
+// buttons and eventlisteners
 btnRand.addEventListener("click", statPoints);
 btnAllocate.addEventListener("click", randomAllocation);
 str.addEventListener("click", decrementPoints);
@@ -108,8 +113,13 @@ wis.addEventListener("click", decrementPoints);
 int.addEventListener("click", decrementPoints);
 cha.addEventListener("click", decrementPoints);
 startGamebtn.addEventListener("click", moveDarkelf);
+showHideMenu.addEventListener("click", showHideStats);
 //endGamebtn.addEventListener("click");
 
+function showHideStats() {
+  ulStats.classList.toggle("hide");
+  ulStats.classList.toggle("ulist");
+}
 function moveDarkelf() {
   //Variable for moving the dark elf
   let darkElf = document.getElementById("dark-elf");
