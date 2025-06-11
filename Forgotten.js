@@ -121,6 +121,9 @@ cha.addEventListener("click", decrementPoints);
 startGamebtn.addEventListener("click", moveDarkelf);
 showHideMenu.addEventListener("click", () => showHide(ulStats, "ulist"));
 endGamebtn.addEventListener("click", () => showHide(endedGame));
+
+// Reusable hide/show function to be used on eventlisteners
+// elemnt is the element to hide, and strClassToRemove is the secondary class to toggle from the element that hides
 function showHide(elemt, strClassToRemove) {
   elemt.classList.toggle("hide");
   elemt.classList.toggle(strClassToRemove);
